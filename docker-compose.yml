@@ -1,0 +1,11 @@
+# Deploy compose — runs on Hurska (192.168.4.33, Pi arm64) at /data/minified.
+# The studio site, Ayula-fronted: minified → https://www.minified.work  (:8093)
+#
+# Hurska's static-site ports: 8090 sleuth · 8091 sloth · 8092 basar · 8093 minified.
+services:
+  minified:
+    image: 192.168.4.9:5000/minified:latest
+    container_name: minified
+    ports:
+      - "8093:80"
+    restart: unless-stopped

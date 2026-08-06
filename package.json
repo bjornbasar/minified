@@ -1,0 +1,13 @@
+{
+  "name": "minified",
+  "private": true,
+  "type": "module",
+  "description": "www.minified.work — the Minified.Work studio site (static; generated from content.mjs + content/*.md)",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test.mjs"
+  },
+  "dependencies": {
+    "marked": "^12.0.2"
+  }
+}

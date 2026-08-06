@@ -1,0 +1,8 @@
+.git
+node_modules
+ci
+assets/og.svg
+content
+*.mjs
+package*.json
+README.md
