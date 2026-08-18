@@ -121,6 +121,8 @@ export const work = {
   groups: [
     {
       heading: 'A framework, and the applications on it',
+      // karhu + mishka are the headline proof: the framework, and the app that proves it
+      // holds up under daily use. Everything else in this section supports that pair.
       blurb:
         'A from-scratch PHP microframework with zero runtime dependencies, its companion packages, and real applications built on top to prove it holds up under production use.',
       projects: [
@@ -161,8 +163,11 @@ export const work = {
     },
     {
       heading: 'Product applications',
+      // These are evidence HERE and products THERE. twobots.dev is the app face — it says
+      // what you can self-host and how to ask about the hosted instances. This page is
+      // only making the capability argument, so it links across rather than repeating it.
       blurb:
-        'Product-shaped work on Next.js (App Router), Prisma, and PostgreSQL — self-hosted, and used daily rather than demoed.',
+        'Product-shaped work on Next.js (App Router), Prisma, and PostgreSQL — self-hosted, and used daily rather than demoed. You can run these yourself: they live on <a href="https://twobots.dev/#games">twobots.dev</a>, which is where the apps are offered.',
       projects: [
         {
           name: 'hartza',
