@@ -111,9 +111,13 @@ export const approach = {
 
 // ---- Work: OUR OWN software. The note is not optional — see honesty rules. ----
 export const work = {
-  head: 'Selected work',
+  head: 'Proof, not a catalogue',
+  // The pointer names the karhu packages SPECIFICALLY. A blanket "anything you can
+  // install lives at twobots.dev" would send people hunting for hartza/artio/kuma,
+  // which are login-walled personal apps and will never be there — the single most
+  // likely disappointment path in the two-site split.
   note:
-    'Everything below we designed and built ourselves — our own products and infrastructure, run in production. <b>No client work is shown here.</b> It is the portfolio of a studio that builds its own tools, and every open-source piece is public and readable.',
+    'Everything below we designed and built ourselves — our own products and infrastructure, run in production. <b>No client work is shown here.</b> It is not a shop window: it is the evidence behind the services above, and every open-source piece is public and readable. The <b>karhu</b> packages are the part you can actually install — they live on <a href="https://twobots.dev/#dev">twobots.dev</a> with their install lines.',
   groups: [
     {
       heading: 'A framework, and the applications on it',
@@ -244,6 +248,7 @@ export const footer = {
   links: [
     { href: '/terms/', label: 'Terms' },
     { href: '/privacy/', label: 'Privacy' },
+    { href: 'https://twobots.dev/', label: 'twobots.dev ↗', external: true },
     { href: 'https://bjorn.basar.co.nz/', label: 'Bjorn Basar ↗', external: true },
   ],
 };

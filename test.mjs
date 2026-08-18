@@ -110,6 +110,10 @@ if (html.home) {
   ok(/Bjorn Basar/.test(html.home), 'home: the "who is behind it" attribution is gone');
   ok(/bjorn\.basar\.co\.nz/.test(html.home), 'home: link to the personal site is gone');
   ok(/No client work is shown here/i.test(html.home), 'home: the "no client work" disclosure is gone');
+  // The two-site split only works if the pointer survives edits. minified.work sells the
+  // services; twobots.dev holds the things you can install. If this link vanishes, the
+  // split silently becomes two overlapping portfolios again.
+  ok(/twobots\.dev/i.test(html.home), 'home: the pointer to twobots.dev is gone');
 }
 
 // --- legal pages: keep the promises they make about themselves ----------------
