@@ -63,7 +63,7 @@ for (const p of PAGES) {
   ok(h.includes('id="theme"'), at('theme toggle missing'));
   ok(h.includes('<footer>'), at('footer missing'));
   ok(h.includes('href="/terms/"') && h.includes('href="/privacy/"'), at('footer legal links missing'));
-  ok(h.includes('otso.minified.work/count.js'), at('analytics beacon missing'));
+  ok(h.includes('traffic.bjornbasar.com/count.js'), at('analytics beacon missing'));
   ok(h.includes('id="main"'), at('no #main target for the skip link'));
 
   // Nothing half-rendered: no leftover template markers or stringified objects.

@@ -19,7 +19,7 @@ export const site = {
   email: 'bjorn@minified.work',
   github: 'https://github.com/bjornbasar',
   location: 'Aotearoa New Zealand',
-  analytics: 'https://otso.minified.work/count',
+  analytics: 'https://traffic.bjornbasar.com/count',
   title: 'Minified.Work — software studio',
   description:
     'Minified.Work is an independent software studio in Aotearoa New Zealand. We build full-stack products, the platforms they run on, and the frameworks underneath — small enough to understand, owned outright.',

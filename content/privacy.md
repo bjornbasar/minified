@@ -47,7 +47,7 @@ This is standard web-server logging. It happens for every visitor and is not opt
 
 ### Analytics
 
-We use **[GoatCounter](https://www.goatcounter.com)**, self-hosted by us at `otso.minified.work`. It is cookieless and does not follow you between sites.
+We use **[GoatCounter](https://www.goatcounter.com)**, self-hosted by us at `traffic.bjornbasar.com`. It is cookieless and does not follow you between sites.
 
 When you load a page, a small script sends:
 

@@ -87,7 +87,7 @@ Build → test gate → multi-arch image → local registry `192.168.4.9:5000` (
 
 ## Analytics
 
-Cookieless, self-hosted **GoatCounter** at [otso.minified.work](https://otso.minified.work) — a silent beacon, no visitor badge. Each page pins its own `path` (`/`, `/terms/`, `/privacy/`) so its rows stay separable from `sloth`'s on the shared instance.
+Cookieless, self-hosted **GoatCounter** at [traffic.bjornbasar.com](https://traffic.bjornbasar.com) — a silent beacon, no visitor badge. Each page pins its own `path` (`/`, `/terms/`, `/privacy/`) so its rows stay separable from `sloth`'s on the shared instance.
 
 ---
 

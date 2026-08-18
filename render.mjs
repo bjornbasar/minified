@@ -188,7 +188,7 @@ const DOC_CSS = `
 // pages are separable in the dashboard from sloth's rows on the same instance.
 const beacon = (path) => `
 <!-- Analytics: self-hosted GoatCounter (privacy-friendly, cookieless). See /privacy/. -->
-<script data-goatcounter="${site.analytics}" data-goatcounter-settings='{"path":"${path}"}' data-cfasync="false" async src="//otso.minified.work/count.js"></script>`;
+<script data-goatcounter="${site.analytics}" data-goatcounter-settings='{"path":"${path}"}' data-cfasync="false" async src="//traffic.bjornbasar.com/count.js"></script>`;
 
 // Theme toggle: flips the [data-theme] attribute the palette blocks key off and
 // remembers the choice. Set before paint in <head> to avoid a flash of the wrong
