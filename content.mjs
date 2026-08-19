@@ -133,7 +133,15 @@ export const work = {
           blurb:
             'An attribute-routed PHP 8.3+ microframework in roughly 1,200 lines with no runtime dependencies: its own PSR-shaped request/response layer, a reflection-based auto-wiring container, an onion middleware pipeline, and a CLI. Architecture decisions captured as ADRs; built test-first to PHPStan level 8.',
           stack: 'PHP 8.3+ · zero runtime deps · attribute routing · auto-wiring DI · PHPUnit · PHPStan L8',
-          links: [{ label: 'GitHub →', href: 'https://github.com/bjornbasar/karhu' }],
+          // Docs link points at the GitHub Pages copy because it is what RESOLVES today.
+      // The canonical home is framework.twobots.dev (mkdocs.yml already declares it), but
+      // that host is still being built and 404s — advertising it early would be the
+      // dead-link failure the deploy gates exist to prevent. Swap when it serves; the
+      // twobots deploy asserts the docs URL returns 200, so a premature swap fails there.
+      links: [
+        { label: 'Docs →', href: 'https://bjornbasar.github.io/karhu/' },
+        { label: 'GitHub →', href: 'https://github.com/bjornbasar/karhu' },
+      ],
         },
         {
           name: 'karhu-db · -queue · -view',
