@@ -1,6 +1,6 @@
 # the static tier — Code Tour (seven repos, two shapes)
 
-> A **reading-guide map** covering the **seven** static sites Hurska serves, and a **reference appendix** — outside the eleven-tour sequence. They split cleanly into two shapes, and the split is the tour: **three have a build step and four have none.** The first three are three answers to *"what is a build step actually for?"* The other four answer a question the first three never have to ask: *if there is no build, where does enforcement go?*
+> A **reading-guide map** covering the **seven** static sites Bosco serves (moved off Hurska 2026-10-23, alongside sleuth's move to Lumra), and a **reference appendix** — outside the eleven-tour sequence. They split cleanly into two shapes, and the split is the tour: **three have a build step and four have none.** The first three are three answers to *"what is a build step actually for?"* The other four answer a question the first three never have to ask: *if there is no build, where does enforcement go?*
 >
 > **How to use it:** §0 the common shape of the three; §1 minified (Markdown → legal pages); §2 sloth (one source, many domains); §3 family-map (generating a map you can't buy); §4 the four with no build step, and what their deploys assert instead; §5 what the tier shares with the rest of the set; §6 exercises.
 >
@@ -17,7 +17,7 @@ content.mjs   ← the words and data, as JS values
 render.mjs    ← functions that turn those values into an HTML string
 build.mjs     ← writes dist/, copies assets
 dist/         ← GENERATED, gitignored — never edit it
-ci/deploy.sh  ← nginx:alpine image → local registry → Hurska
+ci/deploy.sh  ← nginx:alpine image → local registry → Bosco
 ```
 
 **Why a build at all, when the output is one HTML file?** Because in each case something is *derived* — a legal page from Markdown, five domain variants from one template, a map projection from raw geodata. Deriving it at build time means the derivation is reviewable in git and the served bytes are dumb. There is no runtime, so there is nothing to exploit and nothing to keep up.

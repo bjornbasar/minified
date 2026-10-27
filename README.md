@@ -37,8 +37,8 @@ minified/
 ├── assets/            # brand/lockup.svg (CSS-themed), favicons, og card
 ├── nginx.conf         # absolute_redirect off + cache headers (see Trailing slashes)
 ├── Dockerfile         # nginx:alpine
-├── docker-compose.yml # Hurska, :8093
-└── ci/deploy.sh       # git push ruxa main → build → test → registry → Hurska
+├── docker-compose.yml # Bosco, :8093
+└── ci/deploy.sh       # git push ruxa main → build → test → registry → Bosco
 ```
 
 ## Design
@@ -73,9 +73,9 @@ The privacy policy's factual claims were verified against the running stack, and
 
 ## Hosting
 
-`nginx:alpine` on **Hurska** (Pi, arm64) at `:8093`, reverse-proxied by **Ayula** as `https://www.minified.work` (`*.minified.work` Cloudflare Origin cert; the name rides the wildcard). Ayula intercepts 404s and serves the branded minified.work page.
+`nginx:alpine` on **Bosco** (x86_64, moved off Hurska 2026-10-23) at `:8093`, reverse-proxied by **Ayula** as `https://www.minified.work` (`*.minified.work` Cloudflare Origin cert; the name rides the wildcard). Ayula intercepts 404s and serves the branded minified.work page.
 
-Hurska's static-site ports: `8090` sleuth · `8091` sloth · `8092` basar · `8093` minified.
+Bosco's static-site ports: `8091` sloth · `8092` basar · `8093` minified · `8094` basar-cv · `8095` family-map · `8096` diana-cv · `8097` mrs-peopsquik · `8098` twobots (sleuth moved to Lumra `:8090` alongside the `*-docs` sites).
 
 ## Deploy
 
@@ -83,7 +83,7 @@ Hurska's static-site ports: `8090` sleuth · `8091` sloth · `8092` basar · `80
 git push ruxa main     # → post-receive on Ruxa → ci/deploy.sh
 ```
 
-Build → test gate → multi-arch image → local registry `192.168.4.9:5000` (`:latest` + `:sha-<short>`) → redeploy Hurska → smoke-test all three pages → best-effort public `ghcr.io/bjornbasar/minified` copy. Rollback = repin the compose `image:` to a prior `:sha-`.
+Build → test gate → multi-arch image → local registry `192.168.4.9:5000` (`:latest` + `:sha-<short>`) → redeploy Bosco → smoke-test all three pages → best-effort public `ghcr.io/bjornbasar/minified` copy. Rollback = repin the compose `image:` to a prior `:sha-`.
 
 ## Analytics
 
