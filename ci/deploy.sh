@@ -4,7 +4,7 @@
 # pushes the local registry (:latest + :sha- for rollback), redeploys Bosco, then a
 # best-effort PUBLIC ghcr copy (this repo is public — its only cloud path).
 #
-# Runs on Ruxa via `git push ruxa main` (post-receive) or by hand from the checkout.
+# Runs on Ruxa via `git push den main` (post-receive) or by hand from the checkout.
 # The site is entirely self-contained: unlike sleuth, build.mjs reads nothing outside
 # this tree, so no CI_NODE_MOUNTS are needed.
 set -euo pipefail

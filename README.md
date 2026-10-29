@@ -38,7 +38,7 @@ minified/
 ├── nginx.conf         # absolute_redirect off + cache headers (see Trailing slashes)
 ├── Dockerfile         # nginx:alpine
 ├── docker-compose.yml # Bosco, :8093
-└── ci/deploy.sh       # git push ruxa main → build → test → registry → Bosco
+└── ci/deploy.sh       # git push den main → build → test → registry → Bosco
 ```
 
 ## Design
@@ -80,7 +80,7 @@ Bosco's static-site ports: `8091` sloth · `8092` basar · `8093` minified · `8
 ## Deploy
 
 ```bash
-git push ruxa main     # → post-receive on Ruxa → ci/deploy.sh
+git push den main     # → post-receive on Ruxa → ci/deploy.sh
 ```
 
 Build → test gate → multi-arch image → local registry `192.168.4.9:5000` (`:latest` + `:sha-<short>`) → redeploy Bosco → smoke-test all three pages → best-effort public `ghcr.io/bjornbasar/minified` copy. Rollback = repin the compose `image:` to a prior `:sha-`.
