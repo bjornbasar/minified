@@ -25,12 +25,9 @@ ci_log "render + verify (npm ci → build.mjs → test.mjs, in node:26)"
 ci_node sh -c 'npm ci --no-audit --no-fund && node build.mjs && node test.mjs'
 
 ci_log "build + push multi-arch: $IMG (:latest + :sha-$CI_SHA)"
-docker buildx build --builder multiarch --platform linux/amd64,linux/arm64 \
-  -t "$IMG:latest" -t "$IMG:sha-$CI_SHA" --push .
+ci_buildx_push "$IMG"
 
-ci_log "sync compose + redeploy on Bosco"
-rsync -a docker-compose.yml "$BOSCO:$BOSCO_DIR/"
-ssh "$BOSCO" "cd $BOSCO_DIR && docker compose pull && docker compose up -d --remove-orphans && docker image prune -f"
+ci_sync_and_redeploy "$BOSCO" "$BOSCO_DIR" Bosco
 
 # Post-deploy smoke test: all three pages, from the host itself. `-f` makes a
 # non-2xx fail the deploy rather than reporting a green that isn't.
@@ -40,7 +37,4 @@ for P in / /terms/ /privacy/; do
 done
 
 # Best-effort PUBLIC ghcr copy (non-fatal; Bosco pulls the LOCAL registry).
-ci_log "ghcr copy (best-effort, public)"
-docker buildx build --builder multiarch --platform linux/amd64,linux/arm64 \
-  -t "$GHCR_NS/minified:latest" --push . \
-  || ci_log "⚠ ghcr copy failed (non-fatal; deploy already done)"
+ci_ghcr_copy_best_effort minified
