@@ -22,7 +22,7 @@ ci/deploy.sh  ← nginx:alpine image → local registry → Bosco
 
 **Why a build at all, when the output is one HTML file?** Because in each case something is *derived* — a legal page from Markdown, five domain variants from one template, a map projection from raw geodata. Deriving it at build time means the derivation is reviewable in git and the served bytes are dumb. There is no runtime, so there is nothing to exploit and nothing to keep up.
 
-Each ships through [the CI loop](../ci/CODE-TOUR.md), and each is fronted by [Ayula](../ansible/CODE-TOUR.md) with a branded 404. If you've read the `ci` appendix, note that all three are subject to `ci_assert_cache_busted` — the gate that exists because one of these sites shipped a broken stylesheet nobody could see.
+Each ships through [the CI loop](../ci/CODE-TOUR.md), and each is fronted by [Ayula](../ansible/CODE-TOUR.md) with a branded 404. None of the three actually carries `ci_assert_cache_busted`, though — that gate belongs to three of the *no-build-step* four (§4c), which is the more surprising placement: it's the hand-authored HTML that needed the cache-buster check, not the generated output.
 
 ---
 
@@ -77,8 +77,7 @@ record of where the page came from. The Dockerfile's `COPY` list is an **allowli
 never enter the image, and the deploy then proves it on the wire:
 
 ```
-for LEAK in /cv.md /README.md /original/screenshot-2026-08-07.png; do
-  [ "$CODE" = "404" ] || ci_die "provenance file $LEAK is being SERVED (HTTP $CODE)"
+ci_assert_not_served "$BOSCO" 8094 /cv.md /README.md /original/screenshot-2026-08-07.png
 ```
 
 An allowlist is a *claim*; the 404 sweep is the *proof*. The comment says why the proof is a
@@ -131,7 +130,7 @@ never a text colour**, naming exactly where that breaks: "adding `<code>` spans.
 ### Where an assertion belongs is decided by what it is about
 
 twobots' Packagist and contrast gates run **on Ruxa against the built `index.html`**, not through
-`ssh $HURSKA curl` like the 404 sweep and the font check. The comment gives the rule: *"A Packagist
+`ssh $BOSCO curl` like the 404 sweep and the font check. The comment gives the rule: *"A Packagist
 lookup has nothing to do with what nginx serves, and a broken install line should fail BEFORE a
 multi-arch image is built and pushed."*
 
@@ -167,4 +166,4 @@ belongs to.
 
 ---
 
-*Tour covers the static tier @ `a3864a9` — the three build-step repos (minified, plus [sloth](https://github.com/bjornbasar/sloth) and [family-map](https://github.com/bjornbasar/family-map)) and the four without one ([basar-cv](https://github.com/bjornbasar/basar-cv), [diana-cv](https://github.com/bjornbasar/diana-cv), [mrs-peopsquik](https://github.com/bjornbasar/mrs-peopsquik), [twobots](https://github.com/bjornbasar/twobots)). All private except minified and twobots. The eighth static site, [sleuth](../sleuth/CODE-TOUR.md), has its own tour. A reference appendix — the eleven-tour sequence ends at [karu](../karu/CODE-TOUR.md). Ships via [the CI loop](../ci/CODE-TOUR.md); fronted by Ayula.*
+*Tour covers the static tier @ `dfe436e` — the three build-step repos (minified, plus [sloth](https://github.com/bjornbasar/sloth) and [family-map](https://github.com/bjornbasar/family-map)) and the four without one ([basar-cv](https://github.com/bjornbasar/basar-cv), [diana-cv](https://github.com/bjornbasar/diana-cv), [mrs-peopsquik](https://github.com/bjornbasar/mrs-peopsquik), [twobots](https://github.com/bjornbasar/twobots)). All private except minified and twobots. The eighth static site, [sleuth](../sleuth/CODE-TOUR.md), has its own tour. A reference appendix — the eleven-tour sequence ends at [karu](../karu/CODE-TOUR.md). Ships via [the CI loop](../ci/CODE-TOUR.md); fronted by Ayula.*
